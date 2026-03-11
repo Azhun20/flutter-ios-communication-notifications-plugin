@@ -5,4 +5,5 @@ struct NotificationInfo {
     var pngImage: Data
     var content: String
     var value: String
+    var threadIdentifier: String?
 }

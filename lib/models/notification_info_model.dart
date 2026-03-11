@@ -7,12 +7,14 @@ class NotificationInfo {
   final Uint8List imageBytes;
   final String content;
   final String value;
+  final String? threadIdentifier;
   final Function(String payload)? onPressed;
   NotificationInfo({
     required this.senderName,
     required this.imageBytes,
     required this.content,
     required this.value,
+    this.threadIdentifier,
     this.onPressed,
   });
 
@@ -21,6 +23,7 @@ class NotificationInfo {
     Uint8List? imageBytes,
     String? content,
     String? value,
+    String? threadIdentifier,
     Function(String payload)? onPressed,
   }) {
     return NotificationInfo(
@@ -28,6 +31,7 @@ class NotificationInfo {
       imageBytes: imageBytes ?? this.imageBytes,
       content: content ?? this.content,
       value: value ?? this.value,
+      threadIdentifier: threadIdentifier ?? this.threadIdentifier,
       onPressed: onPressed ?? this.onPressed,
     );
   }
@@ -38,6 +42,7 @@ class NotificationInfo {
       'imageBytes': imageBytes,
       'content': content,
       'value': value,
+      'threadIdentifier': threadIdentifier,
     };
   }
 
@@ -45,7 +50,7 @@ class NotificationInfo {
 
   @override
   String toString() {
-    return 'NotificationInfo(senderName: $senderName, imageBytes: $imageBytes, content: $content, value: $value, onPressed: $onPressed)';
+    return 'NotificationInfo(senderName: $senderName, imageBytes: $imageBytes, content: $content, value: $value, threadIdentifier: $threadIdentifier, onPressed: $onPressed)';
   }
 
   @override
@@ -56,6 +61,7 @@ class NotificationInfo {
         other.imageBytes == imageBytes &&
         other.content == content &&
         other.value == value &&
+        other.threadIdentifier == threadIdentifier &&
         other.onPressed == onPressed;
   }
 
@@ -65,6 +71,7 @@ class NotificationInfo {
         imageBytes.hashCode ^
         content.hashCode ^
         value.hashCode ^
+        threadIdentifier.hashCode ^
         onPressed.hashCode;
   }
 }

@@ -62,13 +62,14 @@ class CommunicationNotificationPlugin {
             let identifier = "\(IosCommunicationConstant.prefixIdentifier):\(uuid):\(currentTime)"
 
             var content = UNMutableNotificationContent()
-            
+
             content.title = notificationInfo.senderName
             content.subtitle = ""
             content.body = notificationInfo.content
             content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "alarm"))
             content.categoryIdentifier = identifier
             content.userInfo = ["data": notificationInfo.value]
+            content.threadIdentifier = notificationInfo.threadIdentifier ?? notificationInfo.senderName
             
             var personNameComponents = PersonNameComponents()
             personNameComponents.nickname = notificationInfo.senderName

@@ -55,7 +55,8 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
                 return
             }
             let value = arguments["value"] as? String ?? ""
-            CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value))
+            let threadIdentifier = arguments["threadIdentifier"] as? String
+            CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value, threadIdentifier: threadIdentifier))
             result(true)
             break
         case "isAvailable":
