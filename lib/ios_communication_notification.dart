@@ -26,4 +26,8 @@ class IosCommunicationNotification {
   Future<String?> getInitialPayload() async {
     return IosCommunicationNotificationPlatform.instance.getInitialPayload();
   }
+
+  Future<bool> removeNotificationsByThread(String threadIdentifier) {
+    return IosCommunicationNotificationPlatform.instance.removeNotificationsByThread(threadIdentifier);
+  }
 }

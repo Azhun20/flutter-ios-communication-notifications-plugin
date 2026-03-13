@@ -136,4 +136,28 @@ class CommunicationNotificationPlugin {
             UNUserNotificationCenter.current().add(request)
         }
     }
+
+    func removeNotificationsByThread(_ threadIdentifier: String, completion: @escaping (Bool) -> Void) {
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        // Get all delivered notifications
+        notificationCenter.getDeliveredNotifications { deliveredNotifications in
+            var identifiersToRemove: [String] = []
+
+            // Find all notifications with matching thread identifier
+            for deliveredNotification in deliveredNotifications {
+                if deliveredNotification.request.content.threadIdentifier == threadIdentifier {
+                    identifiersToRemove.append(deliveredNotification.request.identifier)
+                }
+            }
+
+            // Remove the notifications
+            if !identifiersToRemove.isEmpty {
+                notificationCenter.removeDeliveredNotifications(withIdentifiers: identifiersToRemove)
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
 }
