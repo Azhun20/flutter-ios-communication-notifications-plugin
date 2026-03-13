@@ -46,4 +46,17 @@ class MethodChannelIosCommunicationNotification
 
     return isAvailable;
   }
+
+  @override
+  Future<bool> removeNotificationsByThread(String threadIdentifier) async {
+    if (!Platform.isIOS) return false;
+
+    final bool success = await methodChannel.invokeMethod<bool>(
+          "removeNotificationsByThread",
+          {"threadIdentifier": threadIdentifier},
+        ) ??
+        false;
+
+    return success;
+  }
 }

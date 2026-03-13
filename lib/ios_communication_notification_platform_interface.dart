@@ -40,4 +40,8 @@ abstract class IosCommunicationNotificationPlatform extends PlatformInterface {
   Future<String?> getInitialPayload() async {
     throw UnimplementedError('getInitialPayload() has not been implemented.');
   }
+
+  Future<bool> removeNotificationsByThread(String threadIdentifier) {
+    throw UnimplementedError('removeNotificationsByThread() has not been implemented.');
+  }
 }

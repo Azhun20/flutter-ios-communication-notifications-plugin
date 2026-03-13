@@ -66,6 +66,16 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
                 result(false)
             }
             break
+        case "removeNotificationsByThread":
+            let arguments = call.arguments as? [String: Any] ?? [String: Any]()
+            guard let threadIdentifier = arguments["threadIdentifier"] as? String else {
+                result(false)
+                return
+            }
+            CommunicationNotificationPlugin().removeNotificationsByThread(threadIdentifier) { success in
+                result(success)
+            }
+            break
         default:
             result(FlutterMethodNotImplemented)
             break
