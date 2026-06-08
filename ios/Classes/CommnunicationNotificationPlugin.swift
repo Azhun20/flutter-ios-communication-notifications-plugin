@@ -160,4 +160,19 @@ class CommunicationNotificationPlugin {
             }
         }
     }
+
+    func removeAllNotifications(completion: @escaping (Bool) -> Void) {
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        // Get all delivered notifications to check if any exist
+        notificationCenter.getDeliveredNotifications { deliveredNotifications in
+            if !deliveredNotifications.isEmpty {
+                // Remove all delivered notifications
+                notificationCenter.removeAllDeliveredNotifications()
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
 }
