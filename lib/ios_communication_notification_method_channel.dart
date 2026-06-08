@@ -59,4 +59,15 @@ class MethodChannelIosCommunicationNotification
 
     return success;
   }
+
+  @override
+  Future<bool> removeAllNotifications() async {
+    if (!Platform.isIOS) return false;
+
+    final bool success =
+        await methodChannel.invokeMethod<bool>("removeAllNotifications") ??
+            false;
+
+    return success;
+  }
 }
