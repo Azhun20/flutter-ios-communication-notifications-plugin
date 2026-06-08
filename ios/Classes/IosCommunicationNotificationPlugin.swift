@@ -76,6 +76,11 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
                 result(success)
             }
             break
+        case "removeAllNotifications":
+            CommunicationNotificationPlugin().removeAllNotifications { success in
+                result(success)
+            }
+            break
         default:
             result(FlutterMethodNotImplemented)
             break

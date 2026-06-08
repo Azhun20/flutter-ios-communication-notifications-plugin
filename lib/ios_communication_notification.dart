@@ -30,4 +30,8 @@ class IosCommunicationNotification {
   Future<bool> removeNotificationsByThread(String threadIdentifier) {
     return IosCommunicationNotificationPlatform.instance.removeNotificationsByThread(threadIdentifier);
   }
+
+  Future<bool> removeAllNotifications() {
+    return IosCommunicationNotificationPlatform.instance.removeAllNotifications();
+  }
 }

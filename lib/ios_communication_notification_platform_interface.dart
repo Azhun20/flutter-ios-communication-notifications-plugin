@@ -44,4 +44,8 @@ abstract class IosCommunicationNotificationPlatform extends PlatformInterface {
   Future<bool> removeNotificationsByThread(String threadIdentifier) {
     throw UnimplementedError('removeNotificationsByThread() has not been implemented.');
   }
+
+  Future<bool> removeAllNotifications() {
+    throw UnimplementedError('removeAllNotifications() has not been implemented.');
+  }
 }
